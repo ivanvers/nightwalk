@@ -1,0 +1,665 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><manifest xmlns:android="http://schemas.android.com/apk/res/android" android:compileSdkVersion="29" android:compileSdkVersionCodename="10" package="com.netgear.netgearup" platformBuildVersionCode="29" platformBuildVersionName="10">
+    <permission android:description="@string/permission_GCM_desc" android:label="@string/permission_GCM" android:name="com.netgear.netgearup.permission.NtgGCMListenerService" android:protectionLevel="normal"/>
+    <uses-feature android:name="android.hardware.telephony" android:required="false"/>
+    <uses-feature android:name="android.hardware.camera" android:required="true"/>
+    <uses-feature android:name="android.hardware.camera.autofocus"/>
+    <uses-feature android:name="android.hardware.fingerprint" android:required="false"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.USE_FINGERPRINT"/>
+    <uses-permission android:name="android.permission.CHANGE_WIFI_MULTICAST_STATE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE"/>
+    <uses-permission android:name="com.netgear.netgearup.permission.NtgGCMListenerService"/>
+    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="com.android.alarm.permission.SET_ALARM"/>
+    <supports-screens android:anyDensity="true" android:largeScreens="true" android:normalScreens="true" android:resizeable="true" android:smallScreens="true" android:xlargeScreens="true"/>
+    <queries>
+        <intent>
+            <action android:name="com.google.android.youtube.api.service.START"/>
+        </intent>
+    </queries>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS"/>
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+    <uses-permission android:name="android.permission.FLASHLIGHT"/>
+    <uses-feature android:name="android.hardware.CAMERA" android:required="false"/>
+    <uses-feature android:name="android.hardware.camera.AUTOFOCUS" android:required="false"/>
+    <uses-feature android:glEsVersion="0x00020000" android:required="true"/>
+    <uses-feature android:name="android.hardware.camera.front" android:required="false"/>
+    <uses-feature android:name="android.hardware.camera.flash" android:required="false"/>
+    <uses-feature android:name="android.hardware.screen.landscape" android:required="false"/>
+    <uses-feature android:name="android.hardware.wifi" android:required="false"/>
+    <uses-permission android:name="com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.GET_ACCOUNTS"/>
+    <uses-permission android:name="com.bitdefender.csdklib.permission.C2D_MESSAGE"/>
+    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.REORDER_TASKS"/>
+    <application android:allowBackup="false" android:appComponentFactory="androidx.core.app.CoreComponentFactory" android:configChanges="layoutDirection|locale|orientation" android:icon="@mipmap/ic_launcher_adaptive_nh_blue" android:label="@string/app_name" android:largeHeap="true" android:name="com.netgear.netgearup.core.app.NetgearUpApp" android:requestLegacyExternalStorage="true" android:resizeableActivity="false" android:supportsRtl="true" android:theme="@style/AppTheme.NoTitle" android:usesCleartextTraffic="true">
+        <provider android:authorities="com.netgear.netgearup.provider" android:exported="false" android:grantUriPermissions="true" android:name="com.netgear.netgearup.core.utils.GenericFileProvider">
+            <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/provider_paths"/>
+        </provider>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:label="@string/app_name" android:name="com.netgear.netgearup.core.view.WizardActivity" android:resizeableActivity="true" android:screenOrientation="portrait" android:theme="@style/AppTheme.NoTitle">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:host="*" android:pathPattern=".*" android:scheme="ntgrup"/>
+            </intent-filter>
+        </activity>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.core.view.SsoInstructionActivity" android:resizeableActivity="true" android:screenOrientation="portrait"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.core.view.euData.EuDataOptActivity" android:resizeableActivity="true" android:screenOrientation="portrait"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.core.view.euData.EuDataCollectionActivity" android:resizeableActivity="true" android:screenOrientation="portrait"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.lte.view.AddApnActivity" android:resizeableActivity="true" android:screenOrientation="portrait" android:windowSoftInputMode="stateHidden"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.lte.view.ApnSetupActivity" android:resizeableActivity="true" android:screenOrientation="portrait"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.lte.view.LteNetworkListActivity" android:resizeableActivity="true" android:screenOrientation="portrait"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.lte.view.MobileNetworkSettingActivity" android:resizeableActivity="true" android:screenOrientation="portrait"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.core.view.circlemodule.activity.CircleCDDetailActivity" android:resizeableActivity="true" android:screenOrientation="portrait"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.lte.view.LteFailToConnectActivity" android:resizeableActivity="true" android:screenOrientation="portrait"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.lte.view.LteApnSettingActivity" android:resizeableActivity="true" android:screenOrientation="portrait"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.lte.view.LteSimPinPukActivity" android:resizeableActivity="true" android:screenOrientation="portrait"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.lte.view.LteWizardActivity" android:resizeableActivity="true" android:screenOrientation="portrait"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.core.view.LteDebugActivity" android:resizeableActivity="true" android:screenOrientation="portrait"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.core.view.WiFi6GDebugActivity" android:resizeableActivity="true" android:screenOrientation="portrait"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.core.view.circlemodule.activity.CircleCDActivity" android:resizeableActivity="true" android:screenOrientation="portrait"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.core.view.armormodule.tilesdetail.ShieldThreatDetailActivity" android:resizeableActivity="true" android:screenOrientation="portrait"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.orbi.view.MusicScanQRCodeActivity" android:resizeableActivity="true" android:screenOrientation="portrait"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.orbi.view.OrbiMusicActivity" android:resizeableActivity="true" android:screenOrientation="portrait"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.core.view.CifCommonModuleActivity" android:resizeableActivity="true" android:screenOrientation="portrait"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.core.view.armormodule.webviewactivity.ArmorSubscriptionWebViewActivity" android:resizeableActivity="true" android:screenOrientation="portrait"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.core.view.armormodule.tilesdetail.WeakSpotDetailActivity" android:resizeableActivity="true" android:screenOrientation="portrait"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.core.view.armormodule.tilesdetail.MostBlockThreatDetailActivity" android:resizeableActivity="true" android:screenOrientation="portrait"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.core.view.armormodule.tilesdetail.ShieldedThreatActivity" android:resizeableActivity="true" android:screenOrientation="portrait"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.core.view.armormodule.tilesdetail.UnprotectedDetailActivity" android:resizeableActivity="true" android:screenOrientation="portrait" android:theme="@style/AppTheme.NoTitle"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.core.view.armormodule.scoretable.SecurityScoreAlgo" android:resizeableActivity="true" android:screenOrientation="portrait"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.core.view.armormodule.recommandation.RecommendationViewAll" android:resizeableActivity="true" android:screenOrientation="portrait" android:theme="@style/AppTheme.NoTitle"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:label="@string/app_name" android:name="com.netgear.netgearup.core.view.ConnectedDeviceActivity" android:resizeableActivity="true" android:screenOrientation="portrait" android:theme="@style/AppTheme.Launcher"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.core.view.armormodule.ArmorSecurity" android:resizeableActivity="true" android:screenOrientation="portrait" android:theme="@style/AppTheme.NoTitle"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.core.view.armormodule.ScoreActivity" android:resizeableActivity="true" android:screenOrientation="portrait" android:theme="@style/AppTheme.NoTitle"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.core.view.armormodule.ScoreLogActivity" android:resizeableActivity="true" android:screenOrientation="portrait" android:theme="@style/AppTheme.NoTitle"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:label="@string/wan_setup_page_title" android:name="com.netgear.netgearup.core.view.ConnectedDeviceDetailActivity" android:resizeableActivity="true" android:screenOrientation="portrait" android:theme="@style/AppTheme.NoTitle"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:label="@string/wan_setup_page_title" android:name="com.netgear.netgearup.core.view.ConnectedDeviceAlertActivity" android:resizeableActivity="true" android:screenOrientation="portrait" android:theme="@style/AppTheme.NoTitle"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:label="@string/wan_setup_page_title" android:name="com.netgear.netgearup.core.view.CustomizeCDActivity" android:resizeableActivity="true" android:screenOrientation="portrait" android:theme="@style/AppTheme.NoTitle" android:windowSoftInputMode="adjustPan|stateHidden"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:label="@string/wan_setup_page_title" android:name="com.netgear.netgearup.core.view.ConnectedDeviceSecurityActivity" android:resizeableActivity="true" android:screenOrientation="portrait" android:theme="@style/AppTheme.NoTitle" android:windowSoftInputMode="stateAlwaysHidden"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.core.view.ServerConfigActivity" android:resizeableActivity="true" android:screenOrientation="portrait" android:theme="@style/AppTheme.NoTitle"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.orbi.view.OrbiWizardActivity" android:resizeableActivity="true" android:screenOrientation="portrait" android:theme="@style/AppTheme.NoTitle"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.orbi.view.SatelliteListActivity" android:resizeableActivity="true" android:screenOrientation="portrait" android:theme="@style/AppTheme.NoTitle"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.orbi.view.SelectOrbiTypeActivity" android:resizeableActivity="true" android:screenOrientation="portrait" android:theme="@style/AppTheme.NoTitle"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.router.view.RouterWizardActivity" android:resizeableActivity="true" android:screenOrientation="portrait" android:theme="@style/AppTheme.NoTitle" android:windowSoftInputMode="adjustPan"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.core.view.TermsActivity" android:resizeableActivity="true" android:screenOrientation="portrait" android:theme="@style/AppTheme.NoTitle"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.core.view.FirmwareConfirmActivity" android:resizeableActivity="true" android:screenOrientation="portrait" android:theme="@style/AppTheme.NoTitle"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.core.view.PersonalizeActivity" android:resizeableActivity="true" android:screenOrientation="portrait" android:theme="@style/AppTheme.NoTitle" android:windowSoftInputMode="adjustPan|stateHidden"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.core.view.LoginActivity" android:resizeableActivity="true" android:screenOrientation="portrait" android:theme="@style/AppTheme.NoTitle" android:windowSoftInputMode="adjustPan|stateHidden"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:label="@string/wan_setup_page_title" android:name="com.netgear.netgearup.router.view.AdvancedConfigActivity" android:resizeableActivity="true" android:screenOrientation="portrait" android:theme="@style/AppTheme.NoTitle"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.router.view.ConfigPPPoEActivity" android:resizeableActivity="true" android:screenOrientation="portrait" android:theme="@style/AppTheme.NoTitle" android:windowSoftInputMode="adjustPan|stateHidden"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.router.view.ConfigStaticIpActivity" android:resizeableActivity="true" android:screenOrientation="portrait" android:theme="@style/AppTheme.NoTitle" android:windowSoftInputMode="adjustPan|stateHidden"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.router.view.ConfigPPTPActivity" android:resizeableActivity="true" android:screenOrientation="portrait" android:theme="@style/AppTheme.NoTitle"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:label="Update Admin Password" android:name="com.netgear.netgearup.core.view.ChangeAdminPasswordActivity" android:resizeableActivity="true" android:screenOrientation="portrait" android:theme="@style/AppTheme.NoTitle" android:windowSoftInputMode="adjustPan|stateHidden"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:label="Security Questions" android:name="com.netgear.netgearup.core.view.SecurityQuestionsActivity" android:resizeableActivity="true" android:screenOrientation="portrait" android:theme="@style/AppTheme.NoTitle" android:windowSoftInputMode="adjustPan|stateHidden"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.sso.view.MyNetgearCompletedActivity" android:resizeableActivity="true" android:screenOrientation="portrait" android:theme="@style/AppTheme.DarkNeutral"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:label="@string/nav_overview" android:name="com.netgear.netgearup.core.view.OverviewActivity" android:resizeableActivity="true" android:screenOrientation="portrait" android:theme="@style/AppTheme.NoTitle"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:label="@string/menu_label_settings" android:name="com.netgear.netgearup.core.view.LicenseActivity" android:resizeableActivity="true" android:screenOrientation="portrait" android:theme="@style/AppTheme.NoTitle"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.core.view.SupportActivity" android:resizeableActivity="true" android:screenOrientation="portrait" android:theme="@style/AppTheme.NoTitle"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:label="Articles" android:name="com.netgear.netgearup.core.view.ArticleListActivity" android:resizeableActivity="true" android:screenOrientation="portrait" android:theme="@style/AppTheme.NoTitle"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.core.view.ErrorActivity" android:resizeableActivity="true" android:screenOrientation="portrait" android:theme="@style/AppTheme.NoTitle"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:label="Device" android:name="com.netgear.netgearup.core.view.DeviceActivity" android:resizeableActivity="true" android:screenOrientation="portrait" android:theme="@style/AppTheme.NoTitle"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.router.view.WifiTrafficActivity" android:resizeableActivity="true" android:screenOrientation="portrait" android:theme="@style/AppTheme.NoTitle"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:label="Start Menu" android:name="com.netgear.netgearup.core.view.StartMenuActivity" android:resizeableActivity="true" android:screenOrientation="portrait" android:theme="@style/AppTheme.NoTitle"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:label="Product Selection" android:name="com.netgear.netgearup.core.view.ProductSelectionActivity" android:resizeableActivity="true" android:screenOrientation="portrait" android:theme="@style/AppTheme.NoTitle"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:label="New System" android:name="com.netgear.netgearup.core.view.NewSystemSetupActivity" android:resizeableActivity="true" android:screenOrientation="portrait" android:theme="@style/AppTheme.NoTitle"/>
+        <activity android:configChanges="orientation|screenLayout|screenSize|smallestScreenSize|uiMode" android:label="" android:name="com.netgear.netgearup.sso.view.CountrySearchActivity" android:resizeableActivity="true" android:screenOrientation="portrait" android:theme="@style/AppTheme.NoTitle"/>
+        <activity android:configChanges="orientation|screenLayout|screenSize|smallestScreenSize|uiMode" android:label="" android:name="com.netgear.netgearup.sso.view.EmailConfirmationActivity" android:resizeableActivity="true" android:screenOrientation="portrait" android:theme="@style/AppTheme.NoTitle"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.sso.view.SsoFlowErrorActivity" android:resizeableActivity="true" android:screenOrientation="portrait" android:theme="@style/AppTheme.DarkNeutral"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.orbi.view.OrbiAdvancedConfigActivity" android:resizeableActivity="true" android:screenOrientation="portrait" android:theme="@style/OrbiAppTheme.NoTitle"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.orbi.view.OrbiPppoeConfigActivity" android:resizeableActivity="true" android:screenOrientation="portrait" android:theme="@style/OrbiAppTheme.NoTitle" android:windowSoftInputMode="adjustResize|stateHidden"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.orbi.view.OrbiPptpConfigActivity" android:resizeableActivity="true" android:screenOrientation="portrait" android:theme="@style/OrbiAppTheme.NoTitle" android:windowSoftInputMode="adjustResize|stateHidden"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.orbi.view.OrbiConfigStaticIpActivity" android:resizeableActivity="true" android:screenOrientation="portrait" android:theme="@style/OrbiAppTheme.NoTitle" android:windowSoftInputMode="adjustResize|stateHidden"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:label="@string/nav_overview" android:name="com.netgear.netgearup.core.view.ConnectedDevicesActivity" android:resizeableActivity="true" android:screenOrientation="portrait" android:theme="@style/AppTheme.NoTitle"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.core.view.SpeedTestActivity" android:resizeableActivity="true" android:screenOrientation="portrait"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.core.view.ConnectWifiInstructionsActivity" android:resizeableActivity="true" android:screenOrientation="portrait" android:theme="@style/AppTheme.NoTitle"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.core.view.ConnectionTroubleShootActivity" android:resizeableActivity="true" android:screenOrientation="portrait" android:windowSoftInputMode="adjustPan|stateHidden"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.core.view.SettingsSelectionActivity" android:resizeableActivity="true" android:screenOrientation="portrait"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.core.view.WiFiSettingsActivity" android:resizeableActivity="true" android:screenOrientation="portrait" android:windowSoftInputMode="adjustPan|stateHidden"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.core.view.WiFiTypeSelectionActivity" android:resizeableActivity="true" android:screenOrientation="portrait"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.core.view.GuestWiFiSettingsActivity" android:resizeableActivity="true" android:screenOrientation="portrait" android:windowSoftInputMode="adjustPan|stateHidden"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.core.iot.IoTWiFiSettingsActivity" android:resizeableActivity="true" android:screenOrientation="portrait" android:windowSoftInputMode="adjustPan|stateHidden"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.core.iot.IoTWiFiBandsSelectionActivity" android:resizeableActivity="true" android:screenOrientation="portrait" android:windowSoftInputMode="adjustPan|stateHidden"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.core.view.WiFiEncryptionSelectionActivity" android:resizeableActivity="true" android:screenOrientation="portrait"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.core.view.FingerprintActivity" android:resizeableActivity="true" android:screenOrientation="portrait"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.orbi.view.SatelliteColorRingActivity" android:resizeableActivity="true" android:screenOrientation="portrait" android:theme="@style/AppTheme.DarkNeutral" android:windowSoftInputMode="adjustPan|stateHidden"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.core.view.AboutActivity" android:resizeableActivity="true" android:screenOrientation="portrait" android:theme="@style/AppTheme.NoTitle"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.orbi.view.PositionSatellitesActivity" android:resizeableActivity="true" android:screenOrientation="portrait" android:theme="@style/AppTheme.DarkNeutral" android:windowSoftInputMode="adjustPan|stateHidden"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.orbi.view.EnableIndoorModeActivity" android:resizeableActivity="true" android:screenOrientation="portrait" android:theme="@style/AppTheme.DarkNeutral"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.orbi.view.WaitforOrbiLightRingWhiteActivity" android:resizeableActivity="true" android:screenOrientation="portrait" android:theme="@style/AppTheme.DarkNeutral" android:windowSoftInputMode="adjustPan|stateHidden"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.orbi.view.PressSatelliteSyncButtonActivity" android:resizeableActivity="true" android:screenOrientation="portrait" android:theme="@style/AppTheme.DarkNeutral" android:windowSoftInputMode="adjustPan|stateHidden"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.orbi.view.DetectingSatellitesActivity" android:resizeableActivity="true" android:screenOrientation="portrait" android:theme="@style/AppTheme.DarkNeutral" android:windowSoftInputMode="adjustPan|stateHidden"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.core.view.RouterSettingActivity" android:resizeableActivity="true" android:screenOrientation="portrait" android:theme="@style/AppTheme.NoTitle"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.core.view.components.ProgressActivity" android:resizeableActivity="true" android:screenOrientation="portrait" android:theme="@style/AppTheme.NoTitle"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.core.view.ParentalControlSettingsActivity" android:resizeableActivity="true" android:screenOrientation="portrait" android:theme="@style/AppTheme.NoTitle"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.core.view.NotificationActivity" android:resizeableActivity="true" android:screenOrientation="portrait" android:theme="@style/AppTheme.NoTitle"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.qrcode.ScanQRCodeActivity" android:resizeableActivity="true" android:screenOrientation="portrait" android:theme="@style/AppTheme.NoTitle"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.core.view.BitDefenderActivity" android:resizeableActivity="true" android:screenOrientation="portrait" android:theme="@style/AppTheme.NoTitle"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.core.view.BitDefenderSettingActivity" android:resizeableActivity="true" android:screenOrientation="portrait" android:theme="@style/AppTheme.NoTitle"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.core.view.ArmorSubscriptionWebViewActivity" android:resizeableActivity="true" android:screenOrientation="portrait" android:theme="@style/AppTheme.NoTitle"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.core.view.BdLoaderActivity" android:resizeableActivity="true" android:screenOrientation="portrait" android:theme="@style/AppTheme.NoTitle"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.core.view.BdActivationProgressActivity" android:resizeableActivity="true" android:screenOrientation="portrait" android:theme="@style/AppTheme.NoTitle"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.core.view.RemoteActivity" android:resizeableActivity="true" android:screenOrientation="portrait" android:theme="@style/AppTheme.NoTitle"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.core.view.ExtenderActivity" android:resizeableActivity="true" android:screenOrientation="portrait" android:theme="@style/AppTheme.NoTitle"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.orbi.view.TopologyActivity" android:resizeableActivity="true" android:screenOrientation="portrait" android:theme="@style/AppTheme.NoTitle"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.core.view.productListModule.activity.RemoteDeviceListActivity" android:resizeableActivity="true" android:screenOrientation="portrait" android:theme="@style/AppTheme.NoTitle"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.core.view.ArloSettingsActivity" android:resizeableActivity="true" android:screenOrientation="portrait" android:theme="@style/AppTheme.NoTitle"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.core.view.NetworkScanActivity" android:resizeableActivity="true" android:screenOrientation="portrait" android:theme="@style/AppTheme.NoTitle"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.router.view.CableRouterWizardActivity" android:resizeableActivity="true" android:screenOrientation="portrait" android:theme="@style/AppTheme.NoTitle"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.core.view.CircleDebugActivity" android:resizeableActivity="true" android:screenOrientation="portrait" android:theme="@style/AppTheme.NoTitle"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.core.view.RateActivity" android:resizeableActivity="true" android:screenOrientation="portrait"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.core.view.TrafficMeterActivity" android:resizeableActivity="true" android:screenOrientation="portrait"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.core.view.TrafficMeterSettingsActivity" android:resizeableActivity="true" android:screenOrientation="portrait"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:label="" android:name="com.netgear.netgearup.core.view.ConnDevicesFilterActivity" android:resizeableActivity="true" android:screenOrientation="portrait" android:theme="@style/CustomDialogTheme"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.core.view.NotificationDetailViewActivity" android:resizeableActivity="true" android:screenOrientation="portrait"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.orbi.view.OrbiSystemActivity" android:resizeableActivity="true" android:screenOrientation="portrait"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.orbi.view.SatelliteInfoActivity" android:resizeableActivity="true" android:screenOrientation="portrait"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.orbi.view.ScheduleListActivity" android:resizeableActivity="true" android:screenOrientation="portrait"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.orbi.view.CreateScheduleActivity" android:resizeableActivity="true" android:screenOrientation="portrait" android:windowSoftInputMode="stateHidden"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.core.view.FeatureListOverrideActivity" android:resizeableActivity="true" android:screenOrientation="portrait"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.orbi.view.VoiceOrbiLWAActivity" android:resizeableActivity="true" android:screenOrientation="portrait"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.core.view.WiFiShareQRActivity" android:resizeableActivity="true" android:screenOrientation="portrait"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.core.view.WiFiShareQRTutorialActivity" android:resizeableActivity="true" android:screenOrientation="portrait"/>
+        <activity android:allowTaskReparenting="true" android:configChanges="screenLayout|screenSize|smallestScreenSize" android:launchMode="singleTask" android:name="com.amazon.identity.auth.device.workflow.WorkflowActivity" android:resizeableActivity="true" android:screenOrientation="portrait" android:theme="@android:style/Theme.NoDisplay">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:host="com.netgear.netgearup" android:scheme="amzn"/>
+            </intent-filter>
+        </activity>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.qrcode.ScanQRPromptActivity" android:resizeableActivity="true" android:screenOrientation="portrait"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.qrcode.ScanQRPromptUpdatedActivity" android:resizeableActivity="true" android:screenOrientation="portrait"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.orbi.view.SelectOrbiProductTypeActivity" android:resizeableActivity="true" android:screenOrientation="portrait"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.orbi.view.CableOrbiWizardActivity" android:resizeableActivity="true" android:screenOrientation="portrait"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.core.view.RenewBdSubscriptionActivity" android:resizeableActivity="true" android:screenOrientation="portrait" android:theme="@style/AppTheme.NoTitle"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.core.view.DebugActivity" android:resizeableActivity="true" android:screenOrientation="portrait"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.orbi.view.VoiceEQActivity" android:resizeableActivity="true" android:screenOrientation="portrait"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.orbi.view.VoiceCustomEQActivity" android:resizeableActivity="true" android:screenOrientation="portrait"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.orbi.view.AmazonAlexaConnectActivity" android:resizeableActivity="true" android:screenOrientation="portrait"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.orbi.view.AlexaLanguageActivity" android:resizeableActivity="true" android:screenOrientation="portrait"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.orbi.view.AmazonAccountActivity" android:resizeableActivity="true" android:screenOrientation="portrait"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.core.view.MoreFromNetGearActivity" android:resizeableActivity="true" android:screenOrientation="portrait"/>
+        <activity android:excludeFromRecents="true" android:name="com.netgear.netgearup.core.view.AlertDialogActivity" android:theme="@style/Theme.AppCompat.Dialog"/>
+        <activity android:excludeFromRecents="true" android:launchMode="singleTask" android:name="com.netgear.netgearup.core.view.TokenExpiredDialogActivity" android:theme="@style/Theme.AppCompat.Dialog"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.orbi.view.AmazonRequestSoundActivity" android:resizeableActivity="true" android:screenOrientation="portrait"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.core.view.LocationPermissionActivity" android:resizeableActivity="true" android:screenOrientation="portrait"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.core.view.LocationPermissionUpdatedActivity" android:resizeableActivity="true" android:screenOrientation="portrait"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.orbi.view.VoiceSpotifyActivity" android:resizeableActivity="true" android:screenOrientation="portrait"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:launchMode="singleTop" android:name="com.netgear.netgearup.core.view.circlemodule.activity.CircleFilterV2Activity" android:resizeableActivity="true" android:screenOrientation="portrait"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.core.view.NighthawkProductSelectionActivity" android:resizeableActivity="true" android:screenOrientation="portrait"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.extender.view.ExtenderWizardActivity" android:resizeableActivity="true" android:screenOrientation="portrait"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.extender.view.NetworkListActivity" android:resizeableActivity="true" android:screenOrientation="portrait"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.extender.view.EnterPasswordVerifyExt" android:resizeableActivity="true" android:screenOrientation="portrait" android:windowSoftInputMode="adjustPan|stateHidden"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.extender.view.VerifyingPasswordActivity" android:resizeableActivity="true" android:screenOrientation="portrait"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.extender.view.ChooseCountryActivity" android:resizeableActivity="true" android:screenOrientation="portrait" android:windowSoftInputMode="adjustPan|stateHidden"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.extender.view.OtherNetworkActivity" android:resizeableActivity="true" android:screenOrientation="portrait"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.extender.view.SecurityListActivity" android:resizeableActivity="true" android:screenOrientation="portrait"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.core.view.EnableBstOptionActivity" android:resizeableActivity="true" android:screenOrientation="portrait"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.core.view.BstSettingActivity" android:resizeableActivity="true" android:screenOrientation="portrait"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.core.view.BStHistoryActivity" android:resizeableActivity="true" android:screenOrientation="portrait"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.core.view.BstToggleActivity" android:resizeableActivity="true" android:screenOrientation="portrait"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.core.wifianalytics.WifiAnalyticsMainActivity" android:resizeableActivity="true" android:screenOrientation="portrait" android:theme="@style/Theme.Nighthawk"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.core.view.SecurityMapActivity" android:resizeableActivity="true" android:screenOrientation="portrait"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.core.view.SecuritySendMessageActivity" android:resizeableActivity="true" android:screenOrientation="portrait"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.core.view.ConnectedDevicesSecurityPurchaseActivity" android:resizeableActivity="true" android:screenOrientation="portrait"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.core.view.ConnectedDeviceScanReportActivity" android:resizeableActivity="true" android:screenOrientation="portrait"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.core.view.HandlePushActivity" android:resizeableActivity="true" android:screenOrientation="portrait" android:theme="@style/AppTheme.NoTitle"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.core.view.circlemodule.activity.CircleWizardActivity" android:resizeableActivity="true" android:screenOrientation="portrait" android:theme="@style/Theme.Nighthawk" android:windowSoftInputMode="adjustPan|stateHidden"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.core.view.TouchIdEnableActivity" android:resizeableActivity="true" android:screenOrientation="portrait" android:theme="@style/AppTheme.NoTitle"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.core.view.BestBuyWebViewActivity" android:resizeableActivity="true" android:screenOrientation="portrait" android:theme="@style/AppTheme.NoTitle"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.core.view.circlemodule.activity.CircleProfileActivity" android:resizeableActivity="true" android:screenOrientation="portrait" android:theme="@style/AppTheme.NoTitle"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.core.view.EnableCircleActivity" android:resizeableActivity="true" android:screenOrientation="portrait" android:theme="@style/AppTheme.NoTitle"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.core.view.circlemodule.activity.CircleKidsEducationActivity" android:resizeableActivity="true" android:screenOrientation="portrait" android:theme="@style/AppTheme.NoTitle"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.core.view.circlemodule.activity.CircleKidDeviceScanActivity" android:resizeableActivity="true" android:screenOrientation="portrait" android:theme="@style/AppTheme.NoTitle"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.core.view.circlemodule.activity.CircleProfileListActivity" android:resizeableActivity="true" android:screenOrientation="portrait"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.core.view.circlemodule.activity.CircleBedTimeSettingActivity" android:resizeableActivity="true" android:screenOrientation="portrait" android:theme="@style/AppTheme.NoTitle"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.core.view.circlemodule.activity.CircleFilterActivity" android:resizeableActivity="true" android:screenOrientation="portrait" android:theme="@style/AppTheme.NoTitle"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.core.view.circlemodule.activity.CircleDeviceActivity" android:resizeableActivity="true" android:screenOrientation="portrait" android:theme="@style/AppTheme.NoTitle"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.core.view.circlemodule.activity.CircleAddTmeLimitToAppsActivity" android:resizeableActivity="true" android:screenOrientation="portrait" android:theme="@style/AppTheme.NoTitle"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.core.view.circlemodule.activity.CircleTimeLimitActivity" android:resizeableActivity="true" android:screenOrientation="portrait" android:theme="@style/AppTheme.NoTitle"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.core.view.circlemodule.activity.CircleOffTimeActivity" android:resizeableActivity="true" android:screenOrientation="portrait" android:theme="@style/AppTheme.NoTitle" android:windowSoftInputMode="adjustPan|stateHidden"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.core.view.circlemodule.activity.CircleOffTimeListActivity" android:resizeableActivity="true" android:screenOrientation="portrait" android:theme="@style/AppTheme.NoTitle"/>
+        <activity android:name="com.netgear.netgearup.core.view.RemoteAutoConnectActivity" android:screenOrientation="behind" android:theme="@style/Theme.AppCompat.Transparent.NoActionBar"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.core.view.circlemodule.activity.CircleContentActivity" android:resizeableActivity="true" android:screenOrientation="portrait" android:theme="@style/AppTheme.NoTitle"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.core.view.circlemodule.activity.CircleTimeLimitListActivity" android:resizeableActivity="true" android:screenOrientation="portrait" android:theme="@style/AppTheme.NoTitle"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.lte.view.PinSecurityToggleActivity" android:resizeableActivity="true" android:screenOrientation="portrait"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.lte.view.PinSecurityInputSettingActivity" android:resizeableActivity="true" android:screenOrientation="portrait"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.lte.view.LteBandSettingActivity" android:resizeableActivity="true" android:screenOrientation="portrait"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.core.view.circlemodule.activity.CircleUnmanagedDevicesActivity" android:resizeableActivity="true" android:screenOrientation="portrait"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.lte.view.InternetSelectionActivity" android:resizeableActivity="true" android:screenOrientation="portrait"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.core.view.circlemodule.activity.CircleDeviceLimitWarningActivity" android:resizeableActivity="true" android:screenOrientation="portrait"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.core.view.VPNDebugActivity" android:resizeableActivity="true" android:screenOrientation="portrait"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.core.view.circlemodule.activity.CircleBasicLearnMoreUpSellActivity" android:resizeableActivity="true" android:screenOrientation="portrait"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.core.view.circlemodule.activity.CircleKidsDisconnectActivity" android:resizeableActivity="true" android:screenOrientation="portrait"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.core.view.circlemodule.activity.SPCTrialConfirmationActivity" android:resizeableActivity="true" android:screenOrientation="portrait"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.core.view.educationalslider.activity.AbstractSliderActivity" android:resizeableActivity="true" android:screenOrientation="portrait"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.core.view.OnboardingExpectationActivity" android:resizeableActivity="true" android:screenOrientation="portrait"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.core.view.circlemodule.activity.SPCCreateProfilePromoActivity" android:resizeableActivity="true" android:screenOrientation="portrait"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.core.view.circlemodule.activity.SPCTrialPromoPopupActivity" android:resizeableActivity="true" android:screenOrientation="portrait"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.core.view.ManualConnectWiFiActivity" android:resizeableActivity="true" android:screenOrientation="portrait"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.core.view.RebootModemActivity" android:resizeableActivity="true" android:screenOrientation="portrait"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.core.view.StartMenuUpdatedActivity" android:resizeableActivity="true" android:screenOrientation="portrait"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.core.view.ConnectRouterActivity" android:resizeableActivity="true" android:screenOrientation="portrait"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.core.view.circlemodule.activity.CircleCreateProfileIntroActivity" android:resizeableActivity="true" android:screenOrientation="portrait"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.core.view.circlemodule.activity.CircleCongratsActivity" android:resizeableActivity="true" android:screenOrientation="portrait"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.core.view.circlemodule.activity.CircleMyTimePromoActivity" android:resizeableActivity="true" android:screenOrientation="portrait"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.core.view.WifiSuggestEducationActivity" android:resizeableActivity="true" android:screenOrientation="portrait"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.core.view.circlemodule.activity.CircleActivationPendingActivity" android:resizeableActivity="true" android:screenOrientation="portrait"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.core.view.circlemodule.activity.CircleActivationActivity" android:resizeableActivity="true" android:screenOrientation="portrait"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.core.view.TwoStepVerificationActivity" android:resizeableActivity="true" android:screenOrientation="portrait"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.core.view.SecurityQaAnsVerifyActivity" android:resizeableActivity="true" android:screenOrientation="portrait"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.core.view.ComcastXfinityActivity" android:resizeableActivity="true" android:screenOrientation="portrait"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.core.view.AccountManagementActivity" android:resizeableActivity="true" android:screenOrientation="portrait"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.core.view.circlemodule.activity.ProfileEducationActivity" android:resizeableActivity="true" android:screenOrientation="portrait"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.core.view.circlemodule.activity.SPCRMLTrialPopUpActivity" android:resizeableActivity="true" android:screenOrientation="portrait"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.core.view.armormodule.UnprotectedListActivity" android:resizeableActivity="true" android:screenOrientation="portrait" android:theme="@style/AppTheme.NoTitle"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.core.view.armormodule.BDSharelinkInstructionActivity" android:resizeableActivity="true" android:screenOrientation="portrait" android:theme="@style/AppTheme.NoTitle"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.seal.SeALServiceWebappActivity" android:resizeableActivity="true" android:screenOrientation="portrait"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.seal.SealServicesDebugActivity" android:resizeableActivity="true" android:screenOrientation="portrait"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.core.view.armormodule.ArmorSelecteDevicesActivity" android:resizeableActivity="true" android:screenOrientation="portrait"/>
+        <activity android:configChanges="screenLayout|screenSize|smallestScreenSize" android:name="com.netgear.netgearup.core.view.CountryRegionSelectionActivity" android:resizeableActivity="true" android:screenOrientation="portrait"/>
+        <meta-data android:name="firebase_analytics_collection_deactivated" android:value="true"/>
+        <meta-data android:name="com.google.android.geo.API_KEY" android:value="@string/google_maps_key"/>
+        <meta-data android:name="firebase_crashlytics_collection_enabled" android:value="true"/>
+        <meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version"/>
+        <meta-data android:name="com.urbanairship.autopilot" android:value="com.netgear.netgearup.core.app.AirshipAutopilot"/>
+        <receiver android:enabled="true" android:exported="false" android:name="com.google.android.gms.analytics.AnalyticsReceiver">
+            <intent-filter>
+                <action android:name="com.google.android.gms.analytics.ANALYTICS_DISPATCH"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:enabled="true" android:name="com.netgear.netgearup.core.circle.util.RMLLocalNotificationBroadcastManager"/>
+        <service android:exported="false" android:name="com.netgear.netgearup.core.service.routerhttp.RouterDetectionService"/>
+        <service android:exported="false" android:name="com.netgear.netgearup.core.service.routerhttp.RouterTestDownloadService"/>
+        <service android:exported="false" android:name="com.netgear.netgearup.core.service.routerhttp.MicrosoftInternetService"/>
+        <service android:exported="false" android:name="com.netgear.netgearup.core.service.routersoap.wlanconfiguration.RouterDevice5GSupportedSoapService"/>
+        <service android:exported="false" android:name="com.netgear.netgearup.core.service.routersoap.wlanconfiguration.RouterDevice60GSupportedSoapService"/>
+        <service android:exported="false" android:name="com.netgear.netgearup.core.service.routersoap.deviceInfoServices.RouterDeviceGetInfoSoapService"/>
+        <service android:exported="false" android:name="com.netgear.netgearup.core.service.routersoap.deviceInfoServices.RouterGetAttachDevicesService"/>
+        <service android:exported="false" android:name="com.netgear.netgearup.core.service.routersoap.deviceConfigServices.RouterDeviceConfigSoapService"/>
+        <service android:exported="false" android:name="com.netgear.netgearup.core.service.routersoap.wlanconfiguration.RouterWLANSetConfigSoapService"/>
+        <service android:exported="false" android:name="com.netgear.netgearup.core.service.routersoap.wlanconfiguration.GetWirelessRegionListService"/>
+        <service android:exported="false" android:name="com.netgear.netgearup.core.service.routersoap.deviceInfoServices.RouterAuthenticateSoapService"/>
+        <service android:exported="false" android:name="com.netgear.netgearup.core.service.routersoap.firmwareServices.RouterFirmwareSoapService"/>
+        <service android:exported="false" android:name="com.netgear.netgearup.core.service.routersoap.deviceConfigServices.RouterDeviceGetBlankState"/>
+        <service android:exported="false" android:name="com.netgear.netgearup.core.service.routersoap.deviceConfigServices.RouterDeviceSetBlankstateSoapService"/>
+        <service android:exported="false" android:name="com.netgear.netgearup.core.service.routersoap.wanEthernetServices.RouterWANIPConnectionService"/>
+        <service android:exported="false" android:name="com.netgear.netgearup.core.service.routersoap.wanEthernetServices.RouterEthernetLinkStatusService"/>
+        <service android:exported="false" android:name="com.netgear.netgearup.core.service.routersoap.wanEthernetServices.RouterWANIPConnectionInfoService"/>
+        <service android:exported="false" android:name="com.netgear.netgearup.core.service.routersoap.deviceConfigServices.RouterResetToFactoryDefaultSoapService"/>
+        <service android:exported="false" android:name="com.netgear.netgearup.core.service.routersoap.advancedQoSServices.RouterAdvancedQoS"/>
+        <service android:exported="false" android:name="com.netgear.netgearup.core.service.routersoap.firmwareServices.OrbiFirmwareSoapService"/>
+        <service android:exported="false" android:name="com.netgear.netgearup.core.service.routersoap.wlanconfiguration.Get2GCredentials"/>
+        <service android:exported="false" android:name="com.netgear.netgearup.core.service.routersoap.wlanconfiguration.Get2GInfoService"/>
+        <service android:exported="false" android:name="com.netgear.netgearup.core.service.routersoap.wlanconfiguration.Get5G1Credentials"/>
+        <service android:exported="false" android:name="com.netgear.netgearup.core.service.routersoap.wlanconfiguration.Get5G1GuestAccessEnabledService"/>
+        <service android:exported="false" android:name="com.netgear.netgearup.core.service.routersoap.wlanconfiguration.Get5G1GuestAccessNetworkInfoService"/>
+        <service android:exported="false" android:name="com.netgear.netgearup.core.service.routersoap.deviceInfoServices.RouterSetAttachDeviceInfoService"/>
+        <service android:exported="false" android:name="com.netgear.netgearup.core.service.routersoap.wlanconfiguration.Get5G1InfoService"/>
+        <service android:exported="false" android:name="com.netgear.netgearup.core.service.routersoap.wlanconfiguration.Get5GCredentials"/>
+        <service android:exported="false" android:name="com.netgear.netgearup.core.service.routersoap.wlanconfiguration.Get6GCredentials"/>
+        <service android:exported="false" android:name="com.netgear.netgearup.core.service.routersoap.wlanconfiguration.Get5GGuestAccessEnabledService"/>
+        <service android:exported="false" android:name="com.netgear.netgearup.core.service.routersoap.wlanconfiguration.Get6GGuestAccessEnabledService"/>
+        <service android:exported="false" android:name="com.netgear.netgearup.core.service.routersoap.wlanconfiguration.Get5GGuestAccessNetworkInfoService"/>
+        <service android:exported="false" android:name="com.netgear.netgearup.core.service.routersoap.wlanconfiguration.Get6GGuestAccessNetworkInfoService"/>
+        <service android:exported="false" android:name="com.netgear.netgearup.core.service.routersoap.wlanconfiguration.Get5GInfoService"/>
+        <service android:exported="false" android:name="com.netgear.netgearup.core.service.routersoap.wlanconfiguration.Get6GInfoService"/>
+        <service android:exported="false" android:name="com.netgear.netgearup.core.service.routersoap.wlanconfiguration.Get60GCredentials"/>
+        <service android:exported="false" android:name="com.netgear.netgearup.core.service.routersoap.wlanconfiguration.Get60GInfoService"/>
+        <service android:exported="false" android:name="com.netgear.netgearup.core.service.routersoap.wlanconfiguration.GetAvailableChannelService"/>
+        <service android:exported="false" android:name="com.netgear.netgearup.core.service.routersoap.wlanconfiguration.GetGuestAccessEnabledService"/>
+        <service android:exported="false" android:name="com.netgear.netgearup.core.service.routersoap.wlanconfiguration.GetGuestAccessNetworkInfoService"/>
+        <service android:exported="false" android:name="com.netgear.netgearup.core.service.routersoap.wlanconfiguration.GetWPSStatusService"/>
+        <service android:exported="false" android:name="com.netgear.netgearup.core.service.routersoap.wlanconfiguration.GetGeoLocationSoapService"/>
+        <service android:exported="false" android:name="com.netgear.netgearup.core.service.routersoap.deviceInfoServices.RouterGetFeatureListService"/>
+        <service android:exported="false" android:name="com.netgear.netgearup.core.service.routersoap.parentalControlServices.ParentalControlServices"/>
+        <service android:exported="false" android:name="com.netgear.netgearup.core.service.routersoap.deviceInfoServices.RouterSetUserOptionsTCService"/>
+        <service android:exported="false" android:name="com.netgear.netgearup.core.service.routersoap.getLanConfigSecurityServices.RouterLANConfigSecurityInfoService"/>
+        <service android:exported="false" android:name="com.netgear.netgearup.core.service.routersoap.deviceConfigServices.RouterDeviceSOAPLogin"/>
+        <service android:exported="false" android:name="com.netgear.netgearup.core.service.OnUpKilledService" android:stopWithTask="false"/>
+        <service android:exported="false" android:name="com.netgear.netgearup.core.service.routersoap.outdoorOrbiServices.OutdoorOrbiSoapService"/>
+        <service android:exported="false" android:name="com.netgear.netgearup.core.service.routersoap.deviceInfoServices.RouterDeviceGetSatelliteInfoServices"/>
+        <service android:exported="false" android:name="com.netgear.netgearup.core.service.routersoap.voiceOrbiServices.VoiceOrbiSoapService"/>
+        <service android:exported="false" android:name="com.netgear.netgearup.core.service.routersoap.cableOrbiServices.CableOrbiSoapService"/>
+        <service android:exported="false" android:name="com.netgear.netgearup.core.service.routersoap.deviceConfigServices.RouterDeviceSetTimeZone"/>
+        <service android:exported="false" android:name="com.netgear.netgearup.core.service.routersoap.wlanconfiguration.GetArloEnable"/>
+        <service android:exported="false" android:name="com.netgear.netgearup.core.service.routersoap.wlanconfiguration.SetArloEnable"/>
+        <service android:exported="false" android:name="com.netgear.netgearup.core.service.routerhttp.NetworkScanService"/>
+        <service android:name="com.netgear.netgearup.core.service.PhoneCallStatesService"/>
+        <service android:exported="false" android:name="com.netgear.netgearup.core.service.routersoap.wlanconfiguration.ExtenderWLANConfigSoapService"/>
+        <service android:exported="false" android:name="com.netgear.netgearup.core.service.routersoap.deviceConfigServices.ExtenderDeviceConfigSoapService"/>
+        <service android:exported="false" android:name="com.netgear.netgearup.core.service.routersoap.deviceInfoServices.CableGetCMMACAddressService"/>
+        <service android:exported="false" android:name="com.netgear.netgearup.core.service.routersoap.deviceConfigServices.RouterTrafficMeterSoapService"/>
+        <service android:name="com.netgear.netgearup.core.gcm.NtgGCMListenerService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+            </intent-filter>
+        </service>
+        <service android:enabled="true" android:exported="false" android:name="com.google.android.gms.analytics.AnalyticsService"/>
+        <service android:exported="false" android:name="com.netgear.netgearup.core.service.routersoap.lteServices.LteGetSoapService"/>
+        <service android:exported="false" android:name="com.netgear.netgearup.core.service.routersoap.lteServices.LteSetSoapService"/>
+        <service android:exported="false" android:name="com.netgear.netgearup.core.service.routersoap.lteServices.LteFirmwareSoapService"/>
+        <service android:exported="false" android:name="com.clarisite.mobile.GlassboxJobX" android:permission="android.permission.BIND_JOB_SERVICE">
+            <meta-data android:name="url" android:value="https://report.gbpilot.glassboxdigital.io"/>
+            <meta-data android:name="appid" android:value="1EFD4337-49B9-65B3-F286-F7C9DC379ED9"/>
+        </service>
+        <service android:exported="false" android:name="com.netgear.netgearup.core.service.routersoap.deviceConfigServices.RouterSsoSOAPSecurityQAVerifyAns"/>
+        <service android:exported="false" android:name="com.netgear.netgearup.core.service.routersoap.deviceConfigServices.RouterSsoSoapAccessToken"/>
+        <service android:exported="false" android:name="com.netgear.netgearup.core.service.routersoap.deviceConfigServices.RouterGetSecurityQuestions"/>
+        <service android:exported="false" android:name="com.netgear.netgearup.core.service.routersoap.euDataServices.GetRaEnableStatusService"/>
+        <service android:exported="false" android:name="com.netgear.netgearup.core.service.routersoap.euDataServices.SetRaEnableStatusService"/>
+        <service android:exported="false" android:name="com.netgear.netgearup.core.service.routersoap.wlanconfiguration.MultipleSSIDWLANConfigSoapService"/>
+        <receiver android:name="com.netgear.netgearup.analytics.BootCompleteReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+            </intent-filter>
+        </receiver>
+        <activity android:name="com.netgear.commonaccount.Activity.LoginActivity" android:screenOrientation="portrait" android:theme="@style/CamTheme.insight" android:windowSoftInputMode="stateHidden"/>
+        <activity android:name="com.netgear.commonaccount.Activity.RegistrationActivity" android:screenOrientation="portrait" android:theme="@style/CamTheme.insight" android:windowSoftInputMode="adjustPan|stateHidden"/>
+        <activity android:name="com.netgear.commonaccount.Activity.AccountManagementActivity" android:screenOrientation="portrait" android:theme="@style/CamTheme.insight"/>
+        <activity android:name="com.netgear.commonaccount.Activity.ChangePasswordActivity" android:screenOrientation="portrait" android:theme="@style/CamTheme.insight"/>
+        <activity android:name="com.netgear.commonaccount.Activity.ForgotPasswordActivity" android:screenOrientation="portrait" android:theme="@style/CamTheme.insight"/>
+        <activity android:name="com.netgear.commonaccount.Activity.LoginSettingsActivity" android:screenOrientation="portrait" android:theme="@style/CamTheme.insight"/>
+        <activity android:name="com.netgear.commonaccount.Activity.MFASettingsActivity" android:screenOrientation="portrait" android:theme="@style/CamTheme.insight"/>
+        <activity android:name="com.netgear.commonaccount.Activity.ChangeEmailActivity" android:screenOrientation="portrait" android:theme="@style/CamTheme.insight"/>
+        <activity android:name="com.netgear.commonaccount.Activity.EditProfileActivity" android:screenOrientation="portrait" android:theme="@style/CamTheme.insight"/>
+        <activity android:excludeFromRecents="true" android:launchMode="singleTop" android:name="com.netgear.commonaccount.Activity.AuthenticationActivity" android:screenOrientation="portrait" android:theme="@style/CamTheme.insight"/>
+        <receiver android:exported="false" android:name="com.netgear.commonaccount.util.NotificationActionReceiver">
+            <intent-filter>
+                <action android:name="APPROVE_AUTHENTICATION"/>
+                <action android:name="DENY_AUTHENTICATION"/>
+                <action android:name="APPROVE_PAIRING"/>
+                <action android:name="DENY_PAIRING"/>
+            </intent-filter>
+        </receiver>
+        <activity android:name="com.netgear.commonaccount.Activity.MultiFactorAuthentication" android:screenOrientation="portrait" android:theme="@style/CamTheme.insight"/>
+        <activity android:name="com.netgear.commonaccount.Activity.PushReceiverActivity" android:screenOrientation="portrait" android:theme="@style/CamTheme.insight"/>
+        <activity android:name="com.netgear.commonaccount.Activity.VerifyEmailFlowActivity" android:screenOrientation="portrait" android:theme="@style/CamTheme.insight"/>
+        <activity android:name="com.netgear.commonaccount.Activity.SystemStatusActivity" android:screenOrientation="portrait" android:theme="@style/CamTheme.insight"/>
+        <activity android:name="com.netgear.commonaccount.Activity.TroubleLoggingActivity" android:screenOrientation="portrait" android:theme="@style/CamTheme.insight"/>
+        <activity android:name="com.netgear.commonaccount.Activity.LandingActivity" android:screenOrientation="portrait" android:theme="@style/CamTheme.insight"/>
+        <activity android:launchMode="singleTop" android:name="com.netgear.commonaccount.Activity.MaintenanceActivity" android:screenOrientation="portrait" android:theme="@style/CamTheme.insight"/>
+        <activity android:name="com.netgear.commonaccount.Activity.CAM_PrimaryDeviceActivity" android:screenOrientation="portrait" android:theme="@style/CamTheme.insight"/>
+        <activity android:name="com.netgear.commonaccount.Activity.WebViewFromAccountManagement" android:screenOrientation="portrait" android:theme="@style/CamTheme.insight"/>
+        <activity android:label="@string/app_name" android:name="com.netgear.commonbillingsdk.activity.NetgearProductPurchaseActivity" android:screenOrientation="portrait" android:theme="@style/BillingThemeInsight"/>
+        <activity android:name="com.netgear.commonbillingsdk.activity.BillingErrorActivity" android:screenOrientation="portrait" android:theme="@style/BillingThemeInsight"/>
+        <provider android:authorities="com.netgear.netgearup.share" android:exported="false" android:grantUriPermissions="true" android:name="androidx.core.content.FileProvider">
+            <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/file_paths"/>
+        </provider>
+        <activity android:name="netgear.support.com.support_sdk.activities.Sp_LandingActivity" android:screenOrientation="portrait" android:theme="@style/Sp_SupportSDKThemeInsight" android:windowSoftInputMode="stateAlwaysHidden"/>
+        <activity android:name="netgear.support.com.support_sdk.qrcode.Sp_ProductRegisterActivity" android:screenOrientation="portrait" android:theme="@style/Sp_SupportSDKThemeInsight" android:windowSoftInputMode="stateAlwaysHidden"/>
+        <activity android:name="netgear.support.com.support_sdk.activities.Sp_SupportPageActivity" android:screenOrientation="portrait" android:theme="@style/Sp_SupportSDKThemeInsight" android:windowSoftInputMode="stateAlwaysHidden"/>
+        <activity android:name="netgear.support.com.support_sdk.activities.Sp_SeeOffersWebPageActivity" android:screenOrientation="portrait" android:theme="@style/Sp_SupportSDKThemeInsight" android:windowSoftInputMode="stateAlwaysHidden"/>
+        <activity android:name="netgear.support.com.support_sdk.activities.Sp_CommunityDiscussionActivity" android:screenOrientation="portrait" android:theme="@style/Sp_SupportSDKThemeInsight" android:windowSoftInputMode="stateAlwaysHidden"/>
+        <activity android:configChanges="locale|orientation|screenSize" android:name="netgear.support.com.support_sdk.activities.Sp_YoutubeActivity" android:theme="@style/Sp_SupportSDKThemeInsight" android:windowSoftInputMode="stateAlwaysHidden"/>
+        <activity android:name="netgear.support.com.support_sdk.activities.Sp_OpenSearchlistActivity" android:screenOrientation="portrait" android:theme="@style/Sp_SupportSDKThemeInsight"/>
+        <activity android:name="netgear.support.com.support_sdk.activities.SP_YoutubeTermActivity" android:screenOrientation="portrait" android:theme="@style/Sp_SupportSDKThemeInsight"/>
+        <activity android:launchMode="singleTop" android:name="netgear.support.com.support_sdk.activities.Sp_GuidedAssistanceWebpageActivity" android:screenOrientation="portrait" android:theme="@style/Sp_SupportSDKThemeInsight" android:windowSoftInputMode="stateAlwaysHidden"/>
+        <receiver android:exported="false" android:name="netgear.support.com.support_sdk.receiver.Sp_Version_Update_Receiver">
+            <intent-filter>
+                <action android:name="android.intent.action.MY_PACKAGE_REPLACED"/>
+            </intent-filter>
+        </receiver>
+        <activity android:configChanges="orientation|screenSize" android:launchMode="singleTask" android:name="com.instabug.survey.ui.SurveyActivity" android:theme="@style/InstabugTranslucentSdkTheme" android:windowSoftInputMode="adjustResize"/>
+        <activity android:configChanges="orientation|screenSize" android:launchMode="singleTop" android:name="com.instabug.survey.announcements.ui.activity.AnnouncementActivity" android:theme="@style/InstabugTranslucentSdkTheme" android:windowSoftInputMode="adjustResize"/>
+        <service android:name="com.instabug.survey.network.service.InstabugSurveysSubmitterService" android:permission="android.permission.BIND_JOB_SERVICE"/>
+        <service android:name="com.instabug.survey.announcements.network.InstabugAnnouncementSubmitterService" android:permission="android.permission.BIND_JOB_SERVICE"/>
+        <service android:name="com.instabug.crash.network.InstabugCrashesUploaderService" android:permission="android.permission.BIND_JOB_SERVICE"/>
+        <service android:name="com.instabug.anr.network.InstabugAnrUploaderService" android:permission="android.permission.BIND_JOB_SERVICE"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:launchMode="singleTask" android:name="com.instabug.bug.view.reporting.ReportingContainerActivity" android:theme="@style/InstabugSdkTheme" android:windowSoftInputMode="adjustResize">
+            <intent-filter>
+                <data android:host="instabug-disclaimer.com" android:scheme="instabug-bug"/>
+                <data android:host="instabug-disclaimer.com" android:scheme="repro-steps-disclaimer"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <action android:name="android.intent.action.VIEW"/>
+            </intent-filter>
+        </activity>
+        <service android:name="com.instabug.bug.network.InstabugBugsUploaderService" android:permission="android.permission.BIND_JOB_SERVICE"/>
+        <service android:name="com.instabug.bug.view.actionList.service.ReportCategoriesService" android:permission="android.permission.BIND_JOB_SERVICE"/>
+        <activity android:configChanges="orientation|screenSize" android:launchMode="singleTop" android:name="com.instabug.chat.ui.ChatActivity" android:theme="@style/InstabugSdkTheme" android:windowSoftInputMode="adjustResize"/>
+        <service android:name="com.instabug.chat.network.InstabugMessageUploaderService" android:permission="android.permission.BIND_JOB_SERVICE"/>
+        <service android:name="com.instabug.chat.network.InstabugPushNotificationTokenService" android:permission="android.permission.BIND_JOB_SERVICE"/>
+        <activity android:configChanges="orientation|screenSize" android:launchMode="singleTop" android:name="com.instabug.featuresrequest.ui.FeaturesRequestActivity" android:theme="@style/Theme.AppCompat" android:windowSoftInputMode="adjustResize"/>
+        <service android:name="com.instabug.featuresrequest.network.service.FeaturesRequestVoteService" android:permission="android.permission.BIND_JOB_SERVICE"/>
+        <receiver android:enabled="true" android:exported="false" android:name="com.optimizely.ab.android.datafile_handler.DatafileRescheduler">
+            <intent-filter>
+                <action android:name="android.intent.action.MY_PACKAGE_REPLACED"/>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:enabled="true" android:exported="false" android:name="com.optimizely.ab.android.event_handler.EventRescheduler">
+            <intent-filter>
+                <action android:name="android.intent.action.MY_PACKAGE_REPLACED"/>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+            </intent-filter>
+        </receiver>
+        <provider android:authorities="com.netgear.netgearup.applaunch.contentprovider.AppLaunchContentProvider" android:exported="false" android:initOrder="2147483647" android:name="com.instabug.apm.contentprovider.APMContentProvider"/>
+        <service android:name="com.instabug.library.analytics.network.InstabugAnalyticsUploaderService" android:permission="android.permission.BIND_JOB_SERVICE"/>
+        <activity android:configChanges="orientation|screenSize" android:name="com.instabug.library.internal.video.RequestPermissionActivity" android:theme="@style/InstabugTranslucentSdkTheme"/>
+        <activity android:launchMode="singleTask" android:name="com.instabug.library.invocation.invocationdialog.InstabugDialogActivity" android:theme="@style/InstabugTranslucentSdkTheme"/>
+        <activity android:launchMode="singleTask" android:name="com.instabug.library.ui.onboarding.OnboardingActivity" android:theme="@style/InstabugTranslucentSdkTheme"/>
+        <provider android:authorities="com.netgear.netgearup.internal.contentprovider.InstabugContentProvider" android:enabled="true" android:exported="false" android:name="com.instabug.library.internal.contentprovider.InstabugContentProvider"/>
+        <service android:enabled="true" android:exported="false" android:foregroundServiceType="mediaProjection" android:name="com.instabug.library.internal.video.ScreenRecordingService"/>
+        <service android:enabled="true" android:exported="false" android:foregroundServiceType="mediaProjection" android:name="com.instabug.library.screenshot.ScreenshotCaptureService"/>
+        <activity android:configChanges="orientation|screenSize" android:launchMode="singleTask" android:name="com.salesforce.android.chat.ui.internal.chatfeed.ChatFeedActivity" android:theme="@style/SalesforceTheme" android:windowSoftInputMode="stateHidden"/>
+        <activity android:configChanges="orientation" android:launchMode="singleTask" android:name="com.salesforce.android.chat.ui.internal.prechat.PreChatActivity" android:theme="@style/SalesforceTheme.Floating"/>
+        <service android:directBootAware="true" android:exported="false" android:name="com.google.firebase.components.ComponentDiscoveryService">
+            <meta-data android:name="com.google.firebase.components:com.google.firebase.crashlytics.CrashlyticsRegistrar" android:value="com.google.firebase.components.ComponentRegistrar"/>
+            <meta-data android:name="com.google.firebase.components:com.google.firebase.messaging.FirebaseMessagingRegistrar" android:value="com.google.firebase.components.ComponentRegistrar"/>
+            <meta-data android:name="com.google.firebase.components:com.google.firebase.iid.Registrar" android:value="com.google.firebase.components.ComponentRegistrar"/>
+            <meta-data android:name="com.google.firebase.components:com.google.firebase.datatransport.TransportRegistrar" android:value="com.google.firebase.components.ComponentRegistrar"/>
+            <meta-data android:name="com.google.firebase.components:com.google.firebase.analytics.connector.internal.AnalyticsConnectorRegistrar" android:value="com.google.firebase.components.ComponentRegistrar"/>
+            <meta-data android:name="com.google.firebase.components:com.google.firebase.installations.FirebaseInstallationsRegistrar" android:value="com.google.firebase.components.ComponentRegistrar"/>
+        </service>
+        <service android:name="com.salesforce.android.chat.core.internal.service.ChatService"/>
+        <service android:name="com.salesforce.android.service.common.liveagentlogging.internal.service.LiveAgentLoggingService"/>
+        <activity android:name="cards.pay.paycardsrecognizer.sdk.ui.ScanCardActivity" android:theme="@style/wocr_RecognizerTheme"/>
+        <service android:exported="false" android:name="com.urbanairship.push.fcm.AirshipFirebaseMessagingService">
+            <intent-filter android:priority="-1">
+                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+            </intent-filter>
+        </service>
+        <service android:directBootAware="true" android:exported="false" android:name="com.google.firebase.messaging.FirebaseMessagingService">
+            <intent-filter android:priority="-500">
+                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+            </intent-filter>
+        </service>
+        <activity android:clearTaskOnLaunch="true" android:name="com.journeyapps.barcodescanner.CaptureActivity" android:screenOrientation="sensorLandscape" android:stateNotNeeded="true" android:theme="@style/zxing_CaptureTheme" android:windowSoftInputMode="stateAlwaysHidden"/>
+        <receiver android:enabled="true" android:exported="false" android:name="com.google.android.gms.measurement.AppMeasurementReceiver"/>
+        <service android:enabled="true" android:exported="false" android:name="com.google.android.gms.measurement.AppMeasurementService"/>
+        <service android:enabled="true" android:exported="false" android:name="com.google.android.gms.measurement.AppMeasurementJobService" android:permission="android.permission.BIND_JOB_SERVICE"/>
+        <service android:directBootAware="false" android:exported="@bool/enable_gcm_scheduler_default" android:name="androidx.work.impl.background.gcm.WorkManagerGcmService" android:permission="com.google.android.gms.permission.BIND_NETWORK_TASK_SERVICE">
+            <intent-filter>
+                <action android:name="com.google.android.gms.gcm.ACTION_TASK_READY"/>
+            </intent-filter>
+        </service>
+        <service android:enabled="true" android:exported="false" android:name="com.google.android.gms.analytics.AnalyticsJobService" android:permission="android.permission.BIND_JOB_SERVICE"/>
+        <receiver android:exported="true" android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver" android:permission="com.google.android.c2dm.permission.SEND">
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE"/>
+            </intent-filter>
+        </receiver>
+        <service android:enabled="true" android:exported="false" android:name="pingidsdkclient.onboard.OnboardingService"/>
+        <service android:enabled="true" android:exported="false" android:name="pingidsdkclient.onboard.OnRepairingService"/>
+        <receiver android:enabled="true" android:name="pingidsdkclient.fcm.ChangeStateBroadcastReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.MY_PACKAGE_REPLACED"/>
+            </intent-filter>
+        </receiver>
+        <service android:enabled="true" android:exported="false" android:name="pingidsdkclient.fcm.PingIdPushMessagingService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+            </intent-filter>
+        </service>
+        <service android:enabled="true" android:exported="false" android:name="pingidsdkclient.IgnoreDeviceService"/>
+        <service android:enabled="true" android:exported="false" android:name="pingidsdkclient.fcm.PingIdRegistrationIntentService" android:permission="android.permission.BIND_JOB_SERVICE"/>
+        <service android:enabled="true" android:exported="false" android:name="pingidsdkclient.safetynet.RootDetectionService" android:permission="android.permission.BIND_JOB_SERVICE"/>
+        <uses-library android:name="org.apache.http.legacy" android:required="false"/>
+        <receiver android:exported="false" android:name="com.bd.android.connect.subscriptions.AlarmReceiver">
+            <intent-filter>
+                <action android:name="com.bd.connect.subscription.action.CHECK_SUBSCRIPTION"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:exported="false" android:name="com.bd.android.connect.ping.AlarmReceiver">
+            <intent-filter>
+                <action android:name="com.bitdefender.connect.daily.ping"/>
+            </intent-filter>
+        </receiver>
+        <service android:exported="false" android:name="com.bd.android.connect.push.PushService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+            </intent-filter>
+        </service>
+        <receiver android:exported="false" android:name="com.bitdefender.csdklib.PushReceiver">
+            <intent-filter>
+                <action android:name="com.bitdefender.gcm.intent.RECEIVE"/>
+                <data android:scheme="@string/push_scheme"/>
+            </intent-filter>
+        </receiver>
+        <service android:exported="true" android:name="com.bd.android.shared.scheduler.BDTaskService" android:permission="com.google.android.gms.permission.BIND_NETWORK_TASK_SERVICE">
+            <intent-filter>
+                <action android:name="com.google.android.gms.gcm.ACTION_TASK_READY"/>
+            </intent-filter>
+        </service>
+        <receiver android:exported="false" android:name="com.bd.android.shared.AlarmReceiver">
+            <intent-filter>
+                <action android:name="com.bd.android.shared.action.SDK_LICENSE"/>
+            </intent-filter>
+        </receiver>
+        <activity android:excludeFromRecents="true" android:exported="false" android:name="com.google.android.gms.auth.api.signin.internal.SignInHubActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+        <service android:exported="true" android:name="com.google.android.gms.auth.api.signin.RevocationBoundService" android:permission="com.google.android.gms.auth.api.signin.permission.REVOCATION_NOTIFICATION"/>
+        <activity android:exported="false" android:name="com.google.android.gms.common.api.GoogleApiActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+        <activity android:exported="false" android:name="com.urbanairship.iam.html.HtmlActivity" android:theme="@style/UrbanAirship.InAppHtml.Activity">
+            <meta-data android:name="com.urbanairship.push.iam.EXCLUDE_FROM_AUTO_SHOW" android:value="true"/>
+        </activity>
+        <activity android:exported="false" android:name="com.urbanairship.iam.fullscreen.FullScreenActivity" android:theme="@style/UrbanAirship.InAppFullscreen.Activity">
+            <meta-data android:name="com.urbanairship.push.iam.EXCLUDE_FROM_AUTO_SHOW" android:value="true"/>
+        </activity>
+        <activity android:exported="false" android:name="com.urbanairship.iam.modal.ModalActivity" android:theme="@style/UrbanAirship.InAppModal.Activity">
+            <meta-data android:name="com.urbanairship.push.iam.EXCLUDE_FROM_AUTO_SHOW" android:value="true"/>
+        </activity>
+        <activity android:exported="false" android:name="com.urbanairship.messagecenter.MessageActivity"/>
+        <activity android:exported="false" android:label="@string/ua_message_center_title" android:name="com.urbanairship.messagecenter.MessageCenterActivity"/>
+        <service android:exported="false" android:name="androidx.work.multiprocess.RemoteWorkManagerService"/>
+        <provider android:authorities="com.netgear.netgearup.workmanager-init" android:directBootAware="false" android:exported="false" android:multiprocess="true" android:name="androidx.work.impl.WorkManagerInitializer"/>
+        <service android:directBootAware="false" android:enabled="@bool/enable_system_alarm_service_default" android:exported="false" android:name="androidx.work.impl.background.systemalarm.SystemAlarmService"/>
+        <service android:directBootAware="false" android:enabled="@bool/enable_system_job_service_default" android:exported="true" android:name="androidx.work.impl.background.systemjob.SystemJobService" android:permission="android.permission.BIND_JOB_SERVICE"/>
+        <service android:directBootAware="false" android:enabled="@bool/enable_system_foreground_service_default" android:exported="false" android:name="androidx.work.impl.foreground.SystemForegroundService"/>
+        <receiver android:directBootAware="false" android:enabled="true" android:exported="false" android:name="androidx.work.impl.utils.ForceStopRunnable$BroadcastReceiver"/>
+        <receiver android:directBootAware="false" android:enabled="false" android:exported="false" android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$BatteryChargingProxy">
+            <intent-filter>
+                <action android:name="android.intent.action.ACTION_POWER_CONNECTED"/>
+                <action android:name="android.intent.action.ACTION_POWER_DISCONNECTED"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:directBootAware="false" android:enabled="false" android:exported="false" android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$BatteryNotLowProxy">
+            <intent-filter>
+                <action android:name="android.intent.action.BATTERY_OKAY"/>
+                <action android:name="android.intent.action.BATTERY_LOW"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:directBootAware="false" android:enabled="false" android:exported="false" android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$StorageNotLowProxy">
+            <intent-filter>
+                <action android:name="android.intent.action.DEVICE_STORAGE_LOW"/>
+                <action android:name="android.intent.action.DEVICE_STORAGE_OK"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:directBootAware="false" android:enabled="false" android:exported="false" android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$NetworkStateProxy">
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:directBootAware="false" android:enabled="false" android:exported="false" android:name="androidx.work.impl.background.systemalarm.RescheduleReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+                <action android:name="android.intent.action.TIME_SET"/>
+                <action android:name="android.intent.action.TIMEZONE_CHANGED"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:directBootAware="false" android:enabled="@bool/enable_system_alarm_service_default" android:exported="false" android:name="androidx.work.impl.background.systemalarm.ConstraintProxyUpdateReceiver">
+            <intent-filter>
+                <action android:name="androidx.work.impl.background.systemalarm.UpdateProxies"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:directBootAware="false" android:enabled="true" android:exported="true" android:name="androidx.work.impl.diagnostics.DiagnosticsReceiver" android:permission="android.permission.DUMP">
+            <intent-filter>
+                <action android:name="androidx.work.diagnostics.REQUEST_DIAGNOSTICS"/>
+            </intent-filter>
+        </receiver>
+        <service android:directBootAware="true" android:exported="false" android:name="androidx.room.MultiInstanceInvalidationService"/>
+        <service android:exported="false" android:name="com.google.android.datatransport.runtime.backends.TransportBackendDiscovery">
+            <meta-data android:name="backend:com.google.android.datatransport.cct.CctBackendFactory" android:value="cct"/>
+        </service>
+        <provider android:authorities="com.netgear.netgearup.firebaseinitprovider" android:directBootAware="true" android:exported="false" android:initOrder="100" android:name="com.google.firebase.provider.FirebaseInitProvider"/>
+        <activity android:exported="false" android:name="com.urbanairship.push.NotificationProxyActivity" android:taskAffinity="com.urbanairship.push.NotificationProxyActivity" android:theme="@android:style/Theme.NoDisplay"/>
+        <activity android:exported="false" android:name="com.urbanairship.util.HelperActivity" android:theme="@style/UrbanAirship.HelperActivity">
+            <meta-data android:name="com.urbanairship.push.iam.EXCLUDE_FROM_AUTO_SHOW" android:value="true"/>
+        </activity>
+        <activity android:exported="false" android:name="com.urbanairship.google.PlayServicesErrorActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar">
+            <meta-data android:name="com.urbanairship.push.iam.EXCLUDE_FROM_AUTO_SHOW" android:value="true"/>
+        </activity>
+        <activity android:exported="false" android:name="com.urbanairship.actions.RateAppActivity" android:theme="@style/UrbanAirship.RateAppActivity">
+            <meta-data android:name="com.urbanairship.push.iam.EXCLUDE_FROM_AUTO_SHOW" android:value="true"/>
+            <intent-filter>
+                <action android:name="com.urbanairship.actions.SHOW_RATE_APP_INTENT_ACTION"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <service android:name="com.urbanairship.job.AirshipService"/>
+        <service android:name="com.urbanairship.job.AndroidJobService" android:permission="android.permission.BIND_JOB_SERVICE"/>
+        <receiver android:exported="false" android:name="com.urbanairship.push.NotificationProxyReceiver">
+            <intent-filter android:priority="-999">
+                <action android:name="com.urbanairship.push.OPENED"/>
+                <category android:name="com.netgear.netgearup"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:exported="false" android:name="com.urbanairship.locale.LocaleChangeReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.LOCALE_CHANGED"/>
+            </intent-filter>
+        </receiver>
+        <provider android:authorities="com.netgear.netgearup.urbanairship.provider" android:exported="false" android:name="com.urbanairship.UrbanAirshipProvider"/>
+        <provider android:authorities="com.netgear.netgearup.lifecycle-process" android:exported="false" android:multiprocess="true" android:name="androidx.lifecycle.ProcessLifecycleOwnerInitializer"/>
+        <service android:exported="false" android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService" android:permission="android.permission.BIND_JOB_SERVICE"/>
+        <receiver android:exported="false" android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.AlarmManagerSchedulerBroadcastReceiver"/>
+        <activity android:exported="true" android:name="androidx.test.core.app.InstrumentationActivityInvoker$BootstrapActivity" android:theme="@android:style/Theme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+            </intent-filter>
+        </activity>
+        <activity android:exported="true" android:name="androidx.test.core.app.InstrumentationActivityInvoker$EmptyActivity" android:theme="@android:style/Theme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+            </intent-filter>
+        </activity>
+        <activity android:exported="true" android:name="androidx.test.core.app.InstrumentationActivityInvoker$EmptyFloatingActivity" android:theme="@android:style/Theme.Dialog">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+            </intent-filter>
+        </activity>
+        <activity android:enabled="false" android:exported="false" android:launchMode="singleInstance" android:name="com.google.android.play.core.missingsplits.PlayCoreMissingSplitsActivity" android:process=":playcore_missing_splits_activity" android:stateNotNeeded="true"/>
+        <activity android:enabled="false" android:exported="false" android:name="com.google.android.play.core.common.PlayCoreDialogWrapperActivity" android:stateNotNeeded="true" android:theme="@style/Theme.PlayCore.Transparent"/>
+        <service android:enabled="false" android:exported="true" android:name="com.google.android.play.core.assetpacks.AssetPackExtractionService"/>
+    </application>
+</manifest>
